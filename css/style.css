@@ -1,0 +1,200 @@
+/* Reset */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+
+body{
+    background-color: #ECEEF3;
+    font-family: 'roboto', sans-serif;
+}
+
+/* Estilos del contenedor principal */
+
+/*  estilos de header */
+
+header{
+    display: none;
+}
+
+/* estilos de main */
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /*align-item en el vertical, justify en el horizontal*/
+}
+
+main h2{
+    color: #182941;
+    text-align: center;
+}
+
+main h2 span{
+    display: block; /* convierte de linea a bloque*/
+}
+
+main p{
+    text-align: center;
+    padding: 1rem; /*Unidad relativa = 16 PX*/
+}
+
+main .boton{
+    background-color: #51B0DF;
+    color: whitesmoke;
+    padding: 0.7rem;
+    box-shadow: 1px 1px 5px black;
+    text-shadow: 1px 1px 5px black;
+}
+
+main img{
+    width: 70%; /* Trabajamos con la imagen el ancho*/
+
+}
+
+/* estilos de section */
+
+section{
+    display: none;
+}
+
+/* Estilos de footer */
+
+footer h4{
+    text-align: center;
+}
+
+/* media query - Le declaro que cuando tenga como minimo 800px, haga algo o cambie algo */
+
+@media screen and (min-width:800px){
+    .contenedor{
+        display: grid;
+        height: 100vh;
+    }
+
+    header{
+        display: block;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    header nav ul{
+        list-style: none;
+        display: flex;
+        gap: 1rem; /* Con el padre trabajamos los espacios de sus hijos*/
+    }
+
+    /* animaciones de los botones de menu */
+    /* header nav ul li{
+        transition: 3s; Con esto le decimos que vuelva en X tiempo
+    } */
+
+    header nav ul li:hover{ /*Cuando nos posicionamos con el mouse, hace algo*/
+        background-color: #51B0DF;
+        font-weight: bold;
+        transform: scale(0.9);
+        box-shadow: 1px 1px 2px black;
+        /* transform: rotate(360deg); */
+        /* transition: 3s; Duracion de la transicion */
+        color: whitesmoke;
+    }
+
+    main{
+        height: 75vh;
+        display: grid;
+        grid-template-columns: 2fr 2fr;
+        grid-template-rows: 0.5fr 1fr 0.5fr 0.5fr;
+        grid-template-areas: 
+        "p img"
+        "h2 img"
+        "p-dos img"
+        "boton img";
+        justify-content: center;
+        justify-items: center;
+    }
+
+    main p{
+        grid-area: p;
+    }
+
+    
+    main h2{
+        grid-area: h2;
+    }
+
+    
+    main .p-dos{
+        grid-area: p-dos;
+    }
+    
+    main .boton{
+        grid-area: boton;
+        transition: 0.8s;
+    }
+
+    /* animaciones del boton */
+    
+    main .boton:hover{
+        box-shadow: 1px 1px 2px black;
+        transform: scale(0.9);
+    }
+
+    main img{
+        grid-area: img;
+        transition: 0.8s;
+    }
+
+    /* animacion de img */
+    main img:hover{
+        /* transform: scale(1.1); */
+        filter: drop-shadow(5px 5px 3px); /* Le deja a las imagenes PNG, despegarse del fondo*/
+        transition: 0.2s;
+    }
+
+
+    /* estilos de section */
+    section{
+        display: block;
+        display: flex;
+        background-color: #BEE0F1;
+    }
+
+    section div{
+        padding: 1.5rem;
+        display: flex; /* me permite centrar las imagenes mas abajo*/
+        flex-direction: column;
+        align-items: center;
+        filter: drop-shadow(1px 1px 3px);
+    }
+/* animaciones de img de section */
+    section div img{
+        width: 20%;
+        animation-name: img-movimiento;
+        animation-iteration-count: infinite;
+        animation-duration: 3s;
+        animation-direction: alternate-reverse; /*Regresa a su punto de inicio*/
+    }
+
+    @keyframes img-movimiento {
+        to{
+            transform: scale(1);
+        }
+        
+        from{
+            transform: scale(1.1);
+        }
+    }
+
+    section div p{
+        text-align: center;
+    }
+
+    /* estilos de footer */
+    footer{
+        display: none;
+    }
+}
